@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     public GameObject player;
+    // Remove speed from here and add a Stats script, use it.
     public float speed;
     public float distanceLimit;
 

@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterDirection : MonoBehaviour
 {
+    //TODO: Find a way to rotate the firePoint without rotating the Flower itself
+    //It will look weird when we have art seeing it rotating like a dumbass with pot and all
     public Rigidbody2D rb;
     Vector2 mousePos;
 

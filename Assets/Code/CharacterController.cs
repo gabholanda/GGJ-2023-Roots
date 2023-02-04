@@ -7,15 +7,26 @@ public class CharacterController : MonoBehaviour
 {
     public InputReader reader;
     public Transform firePoint;
+    // This will break if you don't add the five transforms(Pots)
     public Transform[] teleportPoints;
     public GameObject bulletPrefab;
     public float bulletForce = 20.0f;
+    public Stats stats;
 
     [SerializeField]
     [Min(0.0f)]
     private float cooldownTime;
 
     private bool isCoolingDown;
+
+
+    //TODO: Pass stats damage to bulletPrefab
+    //A bullet needs to be independent from the character, as such, its speed and damage will be
+    //in a different script (Thorn) and not in the CharacterController script
+    private void Awake()
+    {
+        stats = GetComponent<Stats>();
+    }
 
     private void OnEnable()
     {
