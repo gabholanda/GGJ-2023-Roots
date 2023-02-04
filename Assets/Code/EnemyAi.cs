@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Stats))]
 public class EnemyAI : MonoBehaviour
 {
     public GameObject player;
-    // Remove speed from here and add a Stats script, use it.
-    public float speed;
+    public Stats stats;
     public float distanceLimit;
 
     private float distance;
@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        stats = GetComponent<Stats>();
     }
 
     void Update()
@@ -25,7 +26,8 @@ public class EnemyAI : MonoBehaviour
 
         if (distance > distanceLimit)
         {
-            transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
+            transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, player.transform.position, stats.Speed
+                * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
