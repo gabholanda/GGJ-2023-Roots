@@ -36,5 +36,45 @@ MonoBehaviour:
     m_Id: a9e99fbd-87c1-4516-9aae-1a761bf1db03
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 71b11356-b385-4a5b-bcac-e3c05ae1910c
+      m_Path: <Keyboard>/1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 142c9d99-3836-4ad4-93bf-5d92c9a7f2a0
+      m_Path: <Keyboard>/2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e9f4fd8a-ab11-4020-b707-52ac30648f1c
+      m_Path: <Keyboard>/3
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 11197d28-8a3b-4c67-b4af-7a74f36c4ae7
+      m_Path: <Keyboard>/4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 0f3cf172-aec8-4207-b167-bd8e28f89275
+      m_Path: <Keyboard>/5
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
     m_Flags: 0
