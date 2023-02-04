@@ -12,11 +12,12 @@ public class CharacterDirection : MonoBehaviour
     // Start is called before the first frame update
     void FixedUpdate()
     {
-        mousePos = Mouse.current.position.ReadValue();
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-        Vector2 lookDir = worldPosition - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90.0f;
-        rb.rotation = angle;
+        Vector2 lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 15 * Time.deltaTime);
     }
 
 }
