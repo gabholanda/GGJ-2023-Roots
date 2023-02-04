@@ -7,11 +7,10 @@ public class CharacterDirection : MonoBehaviour
 {
     public Rigidbody2D rb;
     Vector2 mousePos;
-    // Update is called once per frame
 
-    // Start is called before the first frame update
     void FixedUpdate()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
