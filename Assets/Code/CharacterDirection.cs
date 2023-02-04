@@ -15,7 +15,6 @@ public class CharacterDirection : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 

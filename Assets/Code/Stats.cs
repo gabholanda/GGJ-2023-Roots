@@ -43,8 +43,8 @@ public class Stats : MonoBehaviour
     }
 
     [SerializeField]
-    private float damage;
-    public float Damage
+    private int damage;
+    public int Damage
     {
         get { return damage; }
         set
