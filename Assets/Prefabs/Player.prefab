@@ -135,11 +135,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reader: {fileID: 11400000, guid: 9dd775e900b0f234e98b0fcc434991a3, type: 2}
-  firePoint: {fileID: 4335199859313730124}
   teleportPoints: []
+  stats: {fileID: 0}
+  cooldownTime: 0
+  firePoint: {fileID: 4335199859313730124}
   bulletPrefab: {fileID: 1664530721391656305, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
   bulletForce: 20
-  cooldownTime: 0
+  pooledQuantity: 10
 --- !u!1 &4335199859313730127
 GameObject:
   m_ObjectHideFlags: 0
