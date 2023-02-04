@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        PoolEnemies();
+        PollEnemies();
         StartCoroutine(StartSpawning());
     }
 
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         return timeBetweenSpawns;
     }
 
-    private void PoolEnemies()
+    private void PollEnemies()
     {
         for (int i = 0; i < enemyPrefabs.Count; i++)
         {
