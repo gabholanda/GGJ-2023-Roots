@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDirection : MonoBehaviour
+public class CharacterDirection : MonoBehaviour
 {
     public Rigidbody2D rb;
     Vector2 mousePos;

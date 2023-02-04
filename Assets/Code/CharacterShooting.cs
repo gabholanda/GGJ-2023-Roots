@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerShooting : MonoBehaviour
+public class CharacterShooting : MonoBehaviour
 {
     public InputReader reader;
     public Transform firePoint;
