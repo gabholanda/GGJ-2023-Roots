@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0149342f8ff9654e917aad038873fb6, type: 3}
+  m_Name: KeyboardMouse Reader
+  m_EditorClassIdentifier: 
+  OnFire:
+    m_Name: On Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 75dec0bf-37a6-469b-abde-c0b865f35802
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 141124eb-8540-4c98-8d1b-acb1cc1a9328
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Fire
+      m_Flags: 0
+    m_Flags: 0
+  OnTeleport:
+    m_Name: On Teleport
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a9e99fbd-87c1-4516-9aae-1a761bf1db03
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 71b11356-b385-4a5b-bcac-e3c05ae1910c
+      m_Path: <Keyboard>/1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 142c9d99-3836-4ad4-93bf-5d92c9a7f2a0
+      m_Path: <Keyboard>/2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e9f4fd8a-ab11-4020-b707-52ac30648f1c
+      m_Path: <Keyboard>/3
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 11197d28-8a3b-4c67-b4af-7a74f36c4ae7
+      m_Path: <Keyboard>/4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 0f3cf172-aec8-4207-b167-bd8e28f89275
+      m_Path: <Keyboard>/5
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Teleport
+      m_Flags: 0
+    m_Flags: 0
