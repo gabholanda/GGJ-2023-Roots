@@ -16,9 +16,7 @@ public class CharacterDirection : MonoBehaviour
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 15 * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 }
