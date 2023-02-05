@@ -57,7 +57,7 @@ public class ThornLauncher : MonoBehaviour
             effect = Instantiate(shootEffect, transform.position, Quaternion.identity);
             Destroy(effect, 2.0f);
             Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
-            unactiveBullet.transform.position = firePoint.position;
+            unactiveBullet.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
             unactiveBullet.SetActive(true);
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
             unactiveBullet.GetComponent<Thorn>().cooldown = StartCoroutine(DeactivateBullet(unactiveBullet));

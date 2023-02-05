@@ -334,10 +334,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1443905317, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 6970163355907457934, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
+    - target: {fileID: 1443905313, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: maxHealth
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443905313, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: currentHealth
+      value: 30000
+      objectReference: {fileID: 0}
     - target: {fileID: 4335199859027175113, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -385,10 +389,6 @@ PrefabInstance:
     - target: {fileID: 4335199859027175154, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4335199859027175158, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
-      propertyPath: teleportPoints.Array.size
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4335199859027175158, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: teleportPoints.Array.data[0]
@@ -673,3 +673,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1651257934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4335199859027175113, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+  m_PrefabInstance: {fileID: 629140256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1651257941
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651257934}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0083348155}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.28866667}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5606637}
+  m_EdgeRadius: 0

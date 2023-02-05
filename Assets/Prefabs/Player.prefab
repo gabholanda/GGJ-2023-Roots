@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4335199859027175158}
   - component: {fileID: 1443905313}
   - component: {fileID: 1443905317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -123,7 +123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reader: {fileID: 11400000, guid: 9dd775e900b0f234e98b0fcc434991a3, type: 2}
-  teleportPoints: []
+  teleportPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   stats: {fileID: 1443905313}
   launcher: {fileID: 1443905317}
   cooldownTime: 0
@@ -156,9 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 4335199859313730124}
-  bulletPrefab: {fileID: 1664530721391656305, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
+  bulletPrefab: {fileID: 6970163355907457934, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
   bulletForce: 20
   pooledQuantity: 100
+  shootEffect: {fileID: 7486807271824896134, guid: 111293fd3827f7e4fa2c1611fa42661b, type: 3}
 --- !u!1 &4335199859313730127
 GameObject:
   m_ObjectHideFlags: 0

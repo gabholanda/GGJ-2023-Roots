@@ -16,10 +16,12 @@ public class EnemyBrain : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+            attackPoint = player.transform;
         stats = GetComponent<Stats>();
     }
 
-   
+
     void Attack()
     {
         if (Time.time >= nextTimeAttack)
@@ -39,20 +41,22 @@ public class EnemyBrain : MonoBehaviour
     void Update()
 
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x);
+        if (player)
+        {
+            distance = Vector2.Distance(transform.position, player.transform.position);
+            Vector2 direction = player.transform.position - transform.position;
+            direction.Normalize();
+            float angle = Mathf.Atan2(direction.y, direction.x);
 
-        if (distance > distanceLimit)
-        {
-            transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, player.transform.position, stats.Speed
-                * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
-        }
-        else
-        {
-            Attack();
-           
+            if (distance > distanceLimit)
+            {
+                transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, player.transform.position, stats.Speed
+                    * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
+            }
+            else
+            {
+                Attack();
+            }
         }
     }
 }
