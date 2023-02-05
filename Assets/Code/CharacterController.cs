@@ -15,13 +15,7 @@ public class CharacterController : MonoBehaviour
     private float cooldownTime;
 
     private bool isCoolingDown;
-
-
-
-
-    //TODO: Pass stats damage to bulletPrefab
-    //A bullet needs to be independent from the character, as such, its speed and damage will be
-    //in a different script (Thorn) and not in the CharacterController script
+    
     private void Awake()
     {
         stats = GetComponent<Stats>();
@@ -84,6 +78,3 @@ public class CharacterController : MonoBehaviour
         isCoolingDown = false;
     }
 }
-
-
-

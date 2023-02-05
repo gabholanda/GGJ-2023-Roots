@@ -19,15 +19,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Vector2 spawnMaxLocation;
 
-    private void Awake()
-    {
-        PollEnemies();
-        StartCoroutine(StartSpawning());
-    }
-
     public void SetTimeBetweenSpawns(float time)
     {
-        timeBetweenSpawns = time;
+        if (time < 0)
+        {
+            timeBetweenSpawns = 0;
+        }
+        else
+        {
+            timeBetweenSpawns = time;
+        }
     }
 
     public float GetTimeBetweenSpawns()
@@ -35,13 +36,15 @@ public class EnemySpawner : MonoBehaviour
         return timeBetweenSpawns;
     }
 
-    private void PollEnemies()
+    public void PollEnemies()
     {
         for (int i = 0; i < enemyPrefabs.Count; i++)
         {
             for (int j = 0; j < pooledQuantity; j++)
             {
-                pooledEnemies.Add(Instantiate(enemyPrefabs[i], gameObject.transform));
+                GameObject enemy = Instantiate(enemyPrefabs[i], gameObject.transform);
+                enemy.SetActive(false);
+                pooledEnemies.Add(enemy);
             }
         }
     }
@@ -51,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         return pooledEnemies.FindAll(e => !e.activeInHierarchy);
     }
 
-    IEnumerator StartSpawning()
+    public IEnumerator StartSpawning()
     {
         while (true)
         {
@@ -87,5 +90,10 @@ public class EnemySpawner : MonoBehaviour
                                 Random.Range(spawnMinLocation.y, spawnMinLocation.y - 2)),
             _ => new Vector3(),
         };
+    }
+
+    public List<GameObject> GetPooledEnemies()
+    {
+        return pooledEnemies;
     }
 }
