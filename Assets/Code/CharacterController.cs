@@ -40,6 +40,7 @@ public class CharacterController : MonoBehaviour
     void OnFire(InputAction.CallbackContext obj)
     {
         launcher.Shoot();
+        launcher.playEffect(); // not working idk why
     }
 
     void OnTeleport(InputAction.CallbackContext callbackContext)
@@ -77,4 +78,6 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         isCoolingDown = false;
     }
+
+ 
 }

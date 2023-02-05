@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
     private float spawnDecrement = 0.1f;
     [SerializeField]
     private int currentKilled;
+    public ThornLauncher thornLauncher;
 
     public int wave = 1;
 
@@ -42,6 +43,7 @@ public class WaveManager : MonoBehaviour
         if (currentKilled > currentThresold)
         {
             wave++;
+            thornLauncher.attackSpeedIncrease();
             currentThresold += incrementPerWave;
             spawner.SetTimeBetweenSpawns(spawner.GetTimeBetweenSpawns() - spawnDecrement);
         }
