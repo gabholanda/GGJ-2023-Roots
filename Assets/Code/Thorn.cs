@@ -28,9 +28,9 @@ public class Thorn : MonoBehaviour
     // goodluck ;D - Brett P.S added some comments to tell you whats going on a bit
     public GameObject hitEffect;
     GameObject effect;
+    public Stats stats;
 
-
-
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,6 +38,8 @@ public class Thorn : MonoBehaviour
         effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2.0f);
         gameObject.SetActive(false);
+        collision.gameObject.GetComponent<Stats>().CurrentHealth -= stats.Damage;
+        Debug.Log("damged");
     }
 
 
