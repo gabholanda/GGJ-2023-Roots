@@ -67,4 +67,5 @@ MonoBehaviour:
   initialThreshold: 10
   incrementPerWave: 15
   spawnDecrement: 0.1
+  currentKilled: 0
   wave: 1
