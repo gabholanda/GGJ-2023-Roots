@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class SliderHealth : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public Stats stats;
     public Image fillImage;
     private Slider slider;
 
     void Awake()
     {
-       slider = GetComponent<Slider>(); 
+        slider = GetComponent<Slider>();
+        stats = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Stats>();
     }
 
     void Update()
@@ -24,12 +25,12 @@ public class SliderHealth : MonoBehaviour
         {
             fillImage.enabled = true;
         }
-        float fillValue = (float)playerHealth.currentHealth / (float)playerHealth.maxHealth;
-        if(fillValue <= slider.maxValue / 3)
+        float fillValue = (float)stats.CurrentHealth / (float)stats.MaxHealth;
+        if (fillValue <= slider.maxValue / 3)
         {
             fillImage.color = Color.red; //crit hp is low
         }
-        else if(fillValue > slider.maxValue / 3)
+        else if (fillValue > slider.maxValue / 3)
         {
             fillImage.color = Color.green;
         }
