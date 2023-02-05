@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Stats))]
 public class EnemyBrain : MonoBehaviour
@@ -13,12 +14,26 @@ public class EnemyBrain : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 2f;
     public float nextTimeAttack;
+    public AudioClip music;
+    private AudioSource audioSource;
+    public AudioMixerGroup mixerGroup;
+    GameObject effect;
+    public GameObject hitEffect;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         if (player)
             attackPoint = player.transform;
         stats = GetComponent<Stats>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = mixerGroup;
+        if (!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+
+        }
     }
 
 
@@ -33,7 +48,10 @@ public class EnemyBrain : MonoBehaviour
                 if (player.gameObject.CompareTag("Player"))
                 {
                     player.GetComponent<Stats>().CurrentHealth -= stats.Damage;
+                    audioSource.PlayOneShot(music);
+                    ShootEffect();
                     break;
+           
                 }
             }
         }
@@ -56,7 +74,14 @@ public class EnemyBrain : MonoBehaviour
             else
             {
                 Attack();
+                
             }
         }
+    }
+    public void ShootEffect()
+    {
+        effect = Instantiate(hitEffect, attackPoint.position, Quaternion.identity);
+        effect.transform.position = attackPoint.position;
+       
     }
 }

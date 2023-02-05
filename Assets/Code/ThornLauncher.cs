@@ -1,7 +1,8 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
 public class ThornLauncher : MonoBehaviour
 {
     public Transform firePoint;
@@ -17,6 +18,13 @@ public class ThornLauncher : MonoBehaviour
     GameObject effect;
     GameObject unactiveBullet;
     public WaveManager waveManager;
+    public TextMeshProUGUI attackSpeedText;
+    public TextMeshProUGUI bulletSpeedText;
+    public TextMeshProUGUI bulletSizeText;
+    bool shown;
+    GameObject damageEffect;
+    public GameObject hitEffect;
+    
 
     public void Awake()
     {
@@ -41,6 +49,11 @@ public class ThornLauncher : MonoBehaviour
     {
         return pooledBullets.FindAll(e => e.activeInHierarchy);
 
+    }
+
+    private List<GameObject> GetUnactiveBullets()
+    {
+        return pooledBullets.FindAll(e => !e.activeInHierarchy);
     }
 
     private GameObject GetUnactiveBullet()
@@ -88,21 +101,84 @@ public class ThornLauncher : MonoBehaviour
         StopCouroutine(couroutine);
     }
 
-    public void playEffect() // not working idk why
+    public void HitEnemyEffect() // not working idk why
     {
         effect = Instantiate(shootEffect, firePoint.position, Quaternion.identity);
         effect.transform.position = firePoint.position;
         Destroy(effect, 2.0f);
+       
+    }
+    public void ShootEffect()
+    {
+        damageEffect = Instantiate(hitEffect, firePoint.position, Quaternion.identity);
+        damageEffect.transform.position = firePoint.position;
+        Destroy(damageEffect, 2.0f);
     }
 
-    public void attackSpeedIncrease()
+    public void AttackSpeedIncrease()
     {
-        int wave;
-        Debug.Log(waveManager.wave);
-        wave = waveManager.wave;
+        int wave = waveManager.wave;
 
-        shootCooldownLength -= 0.01f * (waveManager.wave / 2);
-        if (shootCooldownLength < 0)
+        shootCooldownLength -= 0.015f * (waveManager.wave / 2);
+
+        if (shootCooldownLength < 0 && shown == false)
+        {
             shootCooldownLength = 0;
+            displayText("Attack Speed Max!", attackSpeedText);
+            shown = true;
+        }
+        else if (shootCooldownLength > 0 && shown == false)
+        {
+            displayText("Attack Speed Up!", attackSpeedText);
+        }
+    }
+
+    public void IncreaseBulletSpeed()
+    {
+        int wave = waveManager.wave;
+        float increment = 20f;
+
+        if (wave % 10 == 0 && wave != 0)
+        {
+            bulletForce += increment;
+            displayText("Bullet Speed Up!", bulletSpeedText);
+        }
+    }
+
+    public void IncreaseBulletSize()
+    {
+        int wave = waveManager.wave;
+        Vector3 increment = new Vector3(1f, 1f, 0.0f);
+        List<GameObject> unactiveBullet = GetUnactiveBullets();
+        if (wave % 11 == 0 && wave != 0)
+        {
+            GameObject randomBullet = unactiveBullet[Random.Range(0, unactiveBullet.Count)];
+            Vector3 newSize = randomBullet.transform.localScale;
+            newSize += increment;
+            randomBullet.transform.localScale = newSize;
+            displayText("Random Bullet Size Up!", bulletSizeText);
+        }
+    }
+
+    private void displayText(string message, TextMeshProUGUI textType)
+    {
+        // Get reference to the TextMeshPro component
+        textType = GetComponentInChildren<TextMeshProUGUI>();
+        textType.text = message;
+
+        // Start coroutine to display the text for 3 seconds
+        StartCoroutine(DisplayTextForDuration(textType, 3f));
+    }
+
+    private IEnumerator DisplayTextForDuration(TextMeshProUGUI textMeshPro, float duration)
+    {
+        // Enable the TextMeshPro component to display the text
+        textMeshPro.enabled = true;
+
+        // Wait for the specified duration
+        yield return new WaitForSeconds(duration);
+
+        // Disable the TextMeshPro component to hide the text
+        textMeshPro.enabled = false;
     }
 }

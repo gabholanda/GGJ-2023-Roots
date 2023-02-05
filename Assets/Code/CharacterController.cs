@@ -13,12 +13,15 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     [Min(0.0f)]
     private float cooldownTime;
-
     private bool isCoolingDown;
-    
+
+
+
     private void Awake()
     {
         stats = GetComponent<Stats>();
+
+
     }
 
     private void OnEnable()
@@ -40,7 +43,8 @@ public class CharacterController : MonoBehaviour
     void OnFire(InputAction.CallbackContext obj)
     {
         launcher.Shoot();
-        launcher.playEffect(); // not working idk why
+        launcher.ShootEffect();
+   
     }
 
     void OnTeleport(InputAction.CallbackContext callbackContext)
@@ -49,27 +53,44 @@ public class CharacterController : MonoBehaviour
         {
             if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
-                transform.position = teleportPoints[0].position;
+                Vector3 newPosition = teleportPoints[0].position;
+                newPosition.y += 0.64f;
+                transform.position = newPosition;
+
             }
             else if (Keyboard.current.digit2Key.wasPressedThisFrame)
             {
-                transform.position = teleportPoints[1].position;
+                Vector3 newPosition = teleportPoints[1].position;
+                newPosition.y += 0.64f;
+                transform.position = newPosition;
+
             }
             else if (Keyboard.current.digit3Key.wasPressedThisFrame)
             {
-                transform.position = teleportPoints[2].position;
+                Vector3 newPosition = teleportPoints[2].position;
+                newPosition.y += 0.64f;
+                transform.position = newPosition;
+
             }
             else if (Keyboard.current.digit4Key.wasPressedThisFrame)
             {
-                transform.position = teleportPoints[3].position;
+                Vector3 newPosition = teleportPoints[3].position;
+                newPosition.y += 0.64f;
+                transform.position = newPosition;
+
             }
             else if (Keyboard.current.digit5Key.wasPressedThisFrame)
             {
-                transform.position = teleportPoints[4].position;
+                Vector3 newPosition = teleportPoints[4].position;
+                newPosition.y += 0.64f;
+                transform.position = newPosition;
+
             }
+
 
             isCoolingDown = true;
             StartCoroutine(Cooldown());
+
         }
     }
 
@@ -79,5 +100,5 @@ public class CharacterController : MonoBehaviour
         isCoolingDown = false;
     }
 
- 
+
 }
