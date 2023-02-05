@@ -1,8 +1,8 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 public class ThornLauncher : MonoBehaviour
 {
     public Transform firePoint;
@@ -20,6 +20,7 @@ public class ThornLauncher : MonoBehaviour
     public WaveManager waveManager;
     public TextMeshProUGUI attackSpeedText;
     public TextMeshProUGUI bulletSpeedText;
+    public TextMeshProUGUI bulletSizeText;
     bool shown;
     GameObject damageEffect;
     public GameObject hitEffect;
@@ -48,6 +49,11 @@ public class ThornLauncher : MonoBehaviour
     {
         return pooledBullets.FindAll(e => e.activeInHierarchy);
 
+    }
+
+    private List<GameObject> GetUnactiveBullets()
+    {
+        return pooledBullets.FindAll(e => !e.activeInHierarchy);
     }
 
     private GameObject GetUnactiveBullet()
@@ -139,14 +145,29 @@ public class ThornLauncher : MonoBehaviour
         }
     }
 
+    public void IncreaseBulletSize()
+    {
+        int wave = waveManager.wave;
+        Vector3 increment = new Vector3(1f, 1f, 0.0f);
+        List<GameObject> unactiveBullet = GetUnactiveBullets();
+        if (wave % 11 == 0 && wave != 0)
+        {
+            GameObject randomBullet = unactiveBullet[Random.Range(0, unactiveBullet.Count)];
+            Vector3 newSize = randomBullet.transform.localScale;
+            newSize += increment;
+            randomBullet.transform.localScale = newSize;
+            displayText("Random Bullet Size Up!", bulletSizeText);
+        }
+    }
+
     private void displayText(string message, TextMeshProUGUI textType)
     {
         // Get reference to the TextMeshPro component
         textType = GetComponentInChildren<TextMeshProUGUI>();
         textType.text = message;
 
-        // Start coroutine to display the text for 5 seconds
-        StartCoroutine(DisplayTextForDuration(textType, 5f));
+        // Start coroutine to display the text for 3 seconds
+        StartCoroutine(DisplayTextForDuration(textType, 3f));
     }
 
     private IEnumerator DisplayTextForDuration(TextMeshProUGUI textMeshPro, float duration)
