@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2083981648132023905}
   - component: {fileID: 2481745127310884491}
   - component: {fileID: -2612102969858834401}
+  - component: {fileID: 3554784054091589235}
   m_Layer: 0
   m_Name: Thorn
   m_TagString: Untagged
@@ -146,4 +147,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dd041b1b5d7904982c339f3881fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 5516167867052039763, guid: 445a764586703fa448b9bdfbd3ba89d7, type: 3}
+  hitEffect: {fileID: 5669006779264335677, guid: d1d589bbb0d139741917d1bd42aac0ef, type: 3}
+  stats: {fileID: 3554784054091589235}
+--- !u!114 &3554784054091589235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664530721391656305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb1e39893735bc44bb02f8df345f953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 1
+  maxHealth: 1
+  speed: 1
+  damage: 5

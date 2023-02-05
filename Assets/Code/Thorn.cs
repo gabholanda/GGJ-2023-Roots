@@ -27,93 +27,20 @@ public class Thorn : MonoBehaviour
     // if im a bitch to wake up tomorrow because its 8am when im writing this, i wrote all these issues to either fix it yourself or communicate to gabriel.
     // goodluck ;D - Brett P.S added some comments to tell you whats going on a bit
     public GameObject hitEffect;
-    GameObject effectToBeDeactivated;
-    public List<GameObject> hitPrefabs;
-    private List<GameObject> pooledEffects = new List<GameObject>();
-    [SerializeField]
-    private int pooledQuantity;
-    List<GameObject> activeEffects;
+    GameObject effect;
+    public Stats stats;
 
-
-    private bool isFirstIteration = true;
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (isFirstIteration) // makes it so the spawn coroutine only runs once
-        {
-            StartCoroutine(StartSpawning(collision)); // reactivates a hit effect
-            isFirstIteration = false;
-            gameObject.SetActive(false);
-        }
+        effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 2.0f);
+        gameObject.SetActive(false);
+        collision.gameObject.GetComponent<Stats>().CurrentHealth -= stats.Damage;
+        Debug.Log("damged");
     }
 
-    void OnCollisionExit2D(Collision2D collision) // can run coroutine again
-    {
-        isFirstIteration = true;
-    }
-    void Awake()
-    {
-        hitPrefabs = new List<GameObject>() { hitEffect };
-        PollThornsEffect(); // polls the thorns (creates them and deactivates them so they're invisible)
-
-        //Destroy(gameObject, 6.0f);
-    }
-
-    private void PollThornsEffect()
-    {
-        for (int i = 0; i < hitPrefabs.Count; i++)
-        {
-            for (int j = 0; j < pooledQuantity; j++)
-            {
-                pooledEffects.Add(Instantiate(hitPrefabs[i], transform.position, Quaternion.identity));
-                activeEffects = GetActiveEffects();
-                effectToBeDeactivated = activeEffects[i];
-                effectToBeDeactivated.SetActive(false);
-            }
-        }
-    }
-
-    private List<GameObject> GetActiveEffects()
-    {
-        return pooledEffects.FindAll(e => e.activeInHierarchy);
-    }
-    private List<GameObject> GetUnactiveEffects()
-    {
-        return pooledEffects.FindAll(e => !e.activeInHierarchy);
-    }
-
-
-    IEnumerator StartSpawning(Collision2D collision) // reactivates the hit effects at the collision location
-    {
-        while (true)
-        {
-
-            List<GameObject> unactiveEffects = GetUnactiveEffects();
-            List<GameObject> activeEffects = GetActiveEffects();
-            if (unactiveEffects.Count > 0)
-            {
-                Vector2 spawnPosition = collision.GetContact(0).point;
-                GameObject effectToBeActivated = unactiveEffects[Random.Range(0, unactiveEffects.Count)];
-                effectToBeActivated.transform.position = spawnPosition;
-
-                effectToBeActivated.SetActive(true);
-                activeEffects.Add(effectToBeActivated);
-                StartCoroutine(DeactivateEffect(effectToBeActivated));
-            }
-            yield break;
-        }
-    }
-
-    IEnumerator DeactivateEffect(GameObject hitEffect) // deactivates the hit effects after 2 seconds
-    {
-        for (int i = 0; i < activeEffects.Count; i++)
-        {
-            activeEffects = GetActiveEffects();
-            yield return new WaitForSeconds(2.0f);
-            effectToBeDeactivated = activeEffects[i];
-            effectToBeDeactivated.SetActive(false);
-        }
-    }
 
 }
