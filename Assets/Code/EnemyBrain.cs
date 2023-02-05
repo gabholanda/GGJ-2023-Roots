@@ -83,6 +83,5 @@ public class EnemyBrain : MonoBehaviour
         effect = Instantiate(hitEffect, attackPoint.position, Quaternion.identity);
         effect.transform.position = attackPoint.position;
         Destroy(effect, 2.0f);
-       
     }
 }
