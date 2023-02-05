@@ -49,8 +49,8 @@ MonoBehaviour:
   - {fileID: 7639973454092609547, guid: 39dc5c07a8a82094293839a7cf45cc9d, type: 3}
   pooledQuantity: 50
   timeBetweenSpawns: 0.5
-  spawnMinLocation: {x: -12, y: -6}
-  spawnMaxLocation: {x: 12, y: 6}
+  spawnMinLocation: {x: -15, y: -8}
+  spawnMaxLocation: {x: 15, y: 8}
 --- !u!114 &804384269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,4 +67,5 @@ MonoBehaviour:
   initialThreshold: 10
   incrementPerWave: 15
   spawnDecrement: 0.1
+  currentKilled: 0
   wave: 1
