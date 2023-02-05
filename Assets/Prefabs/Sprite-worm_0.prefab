@@ -137,11 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1303a5459ca1704ebee20c8d17cbd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  stats: {fileID: 0}
-  distanceLimit: 0
+  player: {fileID: 4335199859027175113, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+  stats: {fileID: 9179912075829688794}
+  distanceLimit: 1
   attackPoint: {fileID: 0}
-  attackRange: 0.5
+  attackRange: 1
   attackRate: 2
   nextTimeAttack: 0
 --- !u!50 &1441074328471091643

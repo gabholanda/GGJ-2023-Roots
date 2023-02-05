@@ -499,6 +499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 804384269, guid: a687457e17f0dda489e265f9615a19c5, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2836471821331695137, guid: a687457e17f0dda489e265f9615a19c5, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -549,8 +553,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836471821331695143, guid: a687457e17f0dda489e265f9615a19c5, type: 3}
       propertyPath: enemyPrefabs.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2836471821331695143, guid: a687457e17f0dda489e265f9615a19c5, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5418349926218870081, guid: df020c09620d3ed4d9c6b9220f1a66c1, type: 3}
     - target: {fileID: 2836471821331695143, guid: a687457e17f0dda489e265f9615a19c5, type: 3}
       propertyPath: enemyPrefabs.Array.data[1]
       value: 

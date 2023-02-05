@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb1e39893735bc44bb02f8df345f953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
-  speed: 0
-  damage: 0
+  currentHealth: 1
+  maxHealth: 1
+  speed: 1
+  damage: 1
 --- !u!114 &4128346408507496807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1303a5459ca1704ebee20c8d17cbd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  stats: {fileID: 0}
-  distanceLimit: 0
+  player: {fileID: 4335199859027175113, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+  stats: {fileID: 4123452138790741277}
+  distanceLimit: 1
   attackPoint: {fileID: 0}
   attackRange: 0.5
   attackRate: 2
