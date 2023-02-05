@@ -134,7 +134,7 @@ public class CharacterController : MonoBehaviour
         {
             // We set everything we need before activating and shooting
             Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
-            unactiveBullet.transform.position = firePoint.position;
+            unactiveBullet.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
             unactiveBullet.SetActive(true);
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
             StartCoroutine(DeactivateBullet(unactiveBullet));
