@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 1154570249}
   - component: {fileID: 1154570248}
   - component: {fileID: 1154570247}
+  - component: {fileID: 1154570250}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -251,6 +252,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154570250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154570246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1650792382
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650792382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.848, y: 1.827, z: 0}
+  m_LocalPosition: {x: -4.37, y: 3.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -379,6 +413,10 @@ MonoBehaviour:
   player: {fileID: 2075294021}
   stats: {fileID: 1650792387}
   distanceLimit: 1
+  attackPoint: {fileID: 2075294032}
+  attackRange: 1
+  attackRate: 2
+  nextTimeAttack: 1
 --- !u!114 &1650792387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,9 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb1e39893735bc44bb02f8df345f953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
-  speed: 2
+  currentHealth: 20
+  maxHealth: 20
+  speed: 1
   damage: 10
 --- !u!1001 &1765813468
 PrefabInstance:
@@ -454,9 +492,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4335199859027175113, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4335199859027175154, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335199859027175156, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: m_Constraints
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4335199859027175158, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: stats
@@ -469,6 +515,10 @@ PrefabInstance:
     - target: {fileID: 4335199859027175158, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: pooledQuantity
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335199859313730127, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4335199859027175159, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
@@ -510,3 +560,34 @@ MonoBehaviour:
   maxHealth: 100
   speed: 2
   damage: 5
+--- !u!4 &2075294032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4335199859027175154, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+  m_PrefabInstance: {fileID: 1765813468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2075294033
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075294021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.020177543}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.28866667}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.53697824}
+  m_EdgeRadius: 0

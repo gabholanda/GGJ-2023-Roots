@@ -19,29 +19,7 @@ public class EnemyAI : MonoBehaviour
         stats = GetComponent<Stats>();
     }
 
-    //void Update()
-    //{
-    //    distance = Vector2.Distance(transform.position, player.transform.position);
-    //    Vector2 direction = player.transform.position - transform.position;
-    //    direction.Normalize();
-    //    float angle = Mathf.Atan2(direction.y, direction.x);
-
-    //    if (distance > distanceLimit)
-    //    {
-    //        transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, player.transform.position, stats.Speed
-    //            * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
-    //    }
-    //    else
-    //    {
-
-    //    }
-
-
-    //}
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-
-    //}
+   
     void Attack()
     {
         if (Time.time >= nextTimeAttack)
@@ -74,7 +52,7 @@ public class EnemyAI : MonoBehaviour
         else
         {
             Attack();
-            Debug.Log("Attack");
+           
         }
     }
 
