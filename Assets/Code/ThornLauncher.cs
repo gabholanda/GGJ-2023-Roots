@@ -67,6 +67,7 @@ public class ThornLauncher : MonoBehaviour
         }
     }
 
+
     public IEnumerator DeactivateBullet(GameObject bullet)
     {
         yield return new WaitForSeconds(3.0f);
@@ -86,5 +87,4 @@ public class ThornLauncher : MonoBehaviour
     {
         StopCouroutine(couroutine);
     }
-
 }

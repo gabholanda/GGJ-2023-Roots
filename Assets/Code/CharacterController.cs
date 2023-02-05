@@ -9,24 +9,15 @@ public class CharacterController : MonoBehaviour
     // This will break if you don't add the five transforms(Pots)
     public Transform[] teleportPoints;
     public Stats stats;
-
+    public ThornLauncher launcher;
     [SerializeField]
     [Min(0.0f)]
     private float cooldownTime;
 
     private bool isCoolingDown;
 
-    [Header("Shooting Variables")]
     // my code to make polling for the bullets (refer to issue 2 in thorn if confused
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public float bulletForce = 20.0f;
-    private List<GameObject> pooledBullets = new List<GameObject>();
-    [SerializeField]
-    private int pooledQuantity;
-    List<GameObject> activeBullets;
-    bool shootCooldown = false;
-    float shootCooldownLength = 0.25f;
+
 
 
 
@@ -36,7 +27,6 @@ public class CharacterController : MonoBehaviour
     private void Awake()
     {
         stats = GetComponent<Stats>();
-        PoolBullets();
     }
 
     private void OnEnable()
@@ -57,7 +47,7 @@ public class CharacterController : MonoBehaviour
 
     void OnFire(InputAction.CallbackContext obj)
     {
-        Shoot();
+        launcher.Shoot();
     }
 
     void OnTeleport(InputAction.CallbackContext callbackContext)
@@ -95,87 +85,16 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         isCoolingDown = false;
     }
+}
 
 
     // more code for the bullet pool, again issue 2.
-    private void PoolBullets()
-    {
-        for (int i = 0; i < pooledQuantity; i++)
-        {
-            pooledBullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation));
-
-            // Unnecessary chunk of code consuming extra space for creating more variables
-            // And repeating a search
-            //activeBullets = GetActiveBullets();
-            //GameObject bulletToBeDeactivated = activeBullets[i];
-            //bulletToBeDeactivated.SetActive(false);
-        }
-
-        activeBullets = GetActiveBullets();
-        for (int i = 0; i < activeBullets.Count; i++)
-        {
-            activeBullets[i].GetComponent<Thorn>().gun = this;
-            activeBullets[i].SetActive(false);
-
-        }
-    }
-
-    private List<GameObject> GetActiveBullets()
-    {
-        return pooledBullets.FindAll(e => e.activeInHierarchy);
-    }
-
-    private GameObject GetUnactiveBullet()
-    {
-        return pooledBullets.Find(e => !e.activeInHierarchy);
-    }
-
-    public void Shoot()
-    {
-        // Unlike the enemies which we need to randomize which one to spawn,
-        // Bullets are all the same and we just need the "next available" one
-        GameObject unactiveBullet = GetUnactiveBullet();
-        if (unactiveBullet && shootCooldown == false)
-        {
-            // We set everything we need before activating and shooting
-            Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
-            unactiveBullet.transform.position = firePoint.position;
-            unactiveBullet.SetActive(true);
-            rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-            unactiveBullet.GetComponent<Thorn>().cooldown = StartCoroutine(DeactivateBullet(unactiveBullet));
-            shootCooldown = true;
-            StartCoroutine(ShootCooldown());
-        }
-    }
 
 
-    public IEnumerator DeactivateBullet(GameObject bullet)
-    {
-        yield return new WaitForSeconds(3.0f);
-        if (bullet.activeInHierarchy)
-        {
-            bullet.SetActive(false);
-        }
-    }
-
-    public IEnumerator ShootCooldown()
-    {
-        yield return new WaitForSeconds(shootCooldownLength);
-        shootCooldown = false;
-    }
-
-    public void StopCouroutine(Coroutine couroutine)
-    {
-        StopCouroutine(couroutine);
-    }
-
-
-    // shooting code used before, not sure if it works with the new hiteffect code test it or smn idk
-    //void Shoot()
-    //{
-    //    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    //    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-    //    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-    //}
-
-}
+// shooting code used before, not sure if it works with the new hiteffect code test it or smn idk
+//void Shoot()
+//{
+//    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+//    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+//    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+//}
