@@ -17,6 +17,7 @@ public class EnemyBrain : MonoBehaviour
     public AudioClip music;
     private AudioSource audioSource;
     public AudioMixerGroup mixerGroup;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -46,7 +47,7 @@ public class EnemyBrain : MonoBehaviour
                 {
                     player.GetComponent<Stats>().CurrentHealth -= stats.Damage;
                     audioSource.PlayOneShot(music);
-
+              
                     break;
            
                 }

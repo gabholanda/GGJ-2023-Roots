@@ -23,6 +23,7 @@ public class ThornLauncher : MonoBehaviour
     bool shown;
 
 
+
     public void Awake()
     {
         PoolBullets();
@@ -93,11 +94,24 @@ public class ThornLauncher : MonoBehaviour
         StopCouroutine(couroutine);
     }
 
-    public void playEffect() // not working idk why
+    public void HitEnemyEffect() // not working idk why
     {
         effect = Instantiate(shootEffect, firePoint.position, Quaternion.identity);
         effect.transform.position = firePoint.position;
         Destroy(effect, 2.0f);
+       
+    }
+    public void ShootEffect()
+    {
+        damageEffect = Instantiate(hitEffect, firePoint.position, Quaternion.identity);
+        damageEffect.transform.position = firePoint.position;
+        Destroy(damageEffect, 2.0f);
+    }
+    public void GetDamageEffect()
+    {
+        getdamageEffect = Instantiate(damageEffect, firePoint.position, Quaternion.identity);
+        getdamageEffect.transform.position = firePoint.position;
+        Destroy(damageEffect, 2.0f);
     }
 
     public void AttackSpeedIncrease()

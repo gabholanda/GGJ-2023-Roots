@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.b
-      value: 0.42830187
+      value: 0.9433962
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.g
-      value: 0.42830187
+      value: 0.9433962
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.r
-      value: 1
+      value: 0.9433962
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key1.b
@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059442809695261743, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: m_Name
-      value: HitEffect
+      value: HitEffectEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 8780543389222689497, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: m_SortingOrder

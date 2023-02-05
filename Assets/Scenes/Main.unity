@@ -788,6 +788,18 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1443905317, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 7486807271824896134, guid: 111293fd3827f7e4fa2c1611fa42661b, type: 3}
+    - target: {fileID: 1443905317, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: getDamaged
+      value: 
+      objectReference: {fileID: 6326840814585585488, guid: 864f25f431670c04685f30f31622bb34, type: 3}
+    - target: {fileID: 1443905317, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
+      propertyPath: shootEffect
+      value: 
+      objectReference: {fileID: 7059442809695261743, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
+    - target: {fileID: 1443905317, guid: ed082e4cf886df149b8f3cb1783fbbf2, type: 3}
       propertyPath: waveManager
       value: 
       objectReference: {fileID: 1007529157}
