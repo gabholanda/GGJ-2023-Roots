@@ -45,6 +45,7 @@ public class WaveManager : MonoBehaviour
             wave++;
             thornLauncher.AttackSpeedIncrease();
             thornLauncher.IncreaseBulletSpeed();
+            thornLauncher.IncreaseBulletSize();
             currentThresold += incrementPerWave;
             spawner.SetTimeBetweenSpawns(spawner.GetTimeBetweenSpawns() - spawnDecrement);
         }
