@@ -11,6 +11,8 @@ public class ThornLauncher : MonoBehaviour
     [SerializeField]
     private int pooledQuantity;
     List<GameObject> activeBullets;
+    bool shootCooldown = false;
+    float shootCooldownLength = 0.25f;
 
     public void Awake()
     {
@@ -32,12 +34,14 @@ public class ThornLauncher : MonoBehaviour
         for (int i = 0; i < activeBullets.Count; i++)
         {
             activeBullets[i].SetActive(false);
+            activeBullets[i].GetComponent<Thorn>().gun = this;
         }
     }
 
     private List<GameObject> GetActiveBullets()
     {
         return pooledBullets.FindAll(e => e.activeInHierarchy);
+
     }
 
     private GameObject GetUnactiveBullet()
@@ -50,22 +54,37 @@ public class ThornLauncher : MonoBehaviour
         // Unlike the enemies which we need to randomize which one to spawn,
         // Bullets are all the same and we just need the "next available" one
         GameObject unactiveBullet = GetUnactiveBullet();
-        if (unactiveBullet)
+        if (unactiveBullet && shootCooldown == false)
         {
             // We set everything we need before activating and shooting
             Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
             unactiveBullet.transform.position = firePoint.position;
-            unactiveBullet.transform.rotation = firePoint.rotation;
             unactiveBullet.SetActive(true);
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(DeactivateBullet(unactiveBullet));
+            unactiveBullet.GetComponent<Thorn>().cooldown = StartCoroutine(DeactivateBullet(unactiveBullet));
+            shootCooldown = true;
+            StartCoroutine(ShootCooldown());
         }
     }
 
 
     public IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(2.0f);
-        bullet.SetActive(false);
+        yield return new WaitForSeconds(3.0f);
+        if (bullet.activeInHierarchy)
+        {
+            bullet.SetActive(false);
+        }
+    }
+
+    public IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(shootCooldownLength);
+        shootCooldown = false;
+    }
+
+    public void StopCouroutine(Coroutine couroutine)
+    {
+        StopCouroutine(couroutine);
     }
 }
