@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2836471821331695142}
   - component: {fileID: 2836471821331695143}
+  - component: {fileID: 804384269}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -45,8 +46,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 5516167867052039763, guid: 445a764586703fa448b9bdfbd3ba89d7, type: 3}
-  pooledQuantity: 1000
-  timeBetweenSpawns: 0.1
-  spawnMinLocation: {x: -12, y: -6}
-  spawnMaxLocation: {x: 12, y: 6}
+  - {fileID: 7639973454092609547, guid: 39dc5c07a8a82094293839a7cf45cc9d, type: 3}
+  pooledQuantity: 50
+  timeBetweenSpawns: 0.5
+  spawnMinLocation: {x: -15, y: -8}
+  spawnMaxLocation: {x: 15, y: 8}
+--- !u!114 &804384269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836471821331695137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7d332503597b24e8162a8c2b86fad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  initialThreshold: 10
+  incrementPerWave: 15
+  spawnDecrement: 0.1
+  currentKilled: 0
+  wave: 1
