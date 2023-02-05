@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: VelocityModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: VelocityModule.y.scalar
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -93,15 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.b
-      value: 0
+      value: 0.4935277
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.g
-      value: 0.41509432
+      value: 0.8867924
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.r
-      value: 0.09929714
+      value: 0.48104307
       objectReference: {fileID: 0}
     - target: {fileID: 5924843754759443268, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key1.b
@@ -220,6 +220,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6902828584869518081, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902828584869518081, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902828584869518081, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.047295
       objectReference: {fileID: 0}
@@ -262,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 7059442809695261743, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: m_Name
       value: PlayerShootEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780543389222689497, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8780543389222689497, guid: be5728cd39a4ac24fbf424776e734b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
