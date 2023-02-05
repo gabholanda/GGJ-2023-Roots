@@ -141,7 +141,8 @@ MonoBehaviour:
   firePoint: {fileID: 4335199859313730124}
   bulletPrefab: {fileID: 1664530721391656305, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
   bulletForce: 20
-  pooledQuantity: 10
+  pooledQuantity: 2
+  spriteRenderer: {fileID: 5139545321465005331, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
 --- !u!1 &4335199859313730127
 GameObject:
   m_ObjectHideFlags: 0
