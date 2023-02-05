@@ -21,8 +21,9 @@ public class ThornLauncher : MonoBehaviour
     public TextMeshProUGUI attackSpeedText;
     public TextMeshProUGUI bulletSpeedText;
     bool shown;
-
-
+    GameObject damageEffect;
+    public GameObject hitEffect;
+    
 
     public void Awake()
     {
@@ -105,12 +106,6 @@ public class ThornLauncher : MonoBehaviour
     {
         damageEffect = Instantiate(hitEffect, firePoint.position, Quaternion.identity);
         damageEffect.transform.position = firePoint.position;
-        Destroy(damageEffect, 2.0f);
-    }
-    public void GetDamageEffect()
-    {
-        getdamageEffect = Instantiate(damageEffect, firePoint.position, Quaternion.identity);
-        getdamageEffect.transform.position = firePoint.position;
         Destroy(damageEffect, 2.0f);
     }
 
