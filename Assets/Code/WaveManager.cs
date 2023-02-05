@@ -19,7 +19,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private float spawnDecrement = 0.1f;
     [SerializeField]
-    private int currentKilled;
+    public int currentKilled;
     public ThornLauncher thornLauncher;
 
     public int wave = 1;
