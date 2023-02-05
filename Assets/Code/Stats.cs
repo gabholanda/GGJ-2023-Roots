@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+
+    public event Action OnDeath;
     [SerializeField]
     private int currentHealth;
     public int CurrentHealth
@@ -15,6 +18,7 @@ public class Stats : MonoBehaviour
             if (currentHealth <= 0)
             {
                 gameObject.SetActive(false);
+                OnDeath?.Invoke();
             }
         }
     }

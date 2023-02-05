@@ -23,11 +23,6 @@ public class ThornLauncher : MonoBehaviour
         for (int i = 0; i < pooledQuantity; i++)
         {
             pooledBullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation));
-            // Unnecessary chunk of code consuming extra space for creating more variables
-            // And repeating a search
-            //activeBullets = GetActiveBullets();
-            //GameObject bulletToBeDeactivated = activeBullets[i];
-            //bulletToBeDeactivated.SetActive(false);
         }
 
         activeBullets = GetActiveBullets();
