@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     [Min(0.0f)]
     private float cooldownTime;
     private bool isCoolingDown;
+    public ThornLauncher thorn;
 
 
 
@@ -42,8 +43,16 @@ public class CharacterController : MonoBehaviour
 
     void OnFire(InputAction.CallbackContext obj)
     {
-        launcher.Shoot();
-        launcher.playEffect(); // not working idk why
+        if (obj.action.name == "b")
+        {
+            thorn.newBomb.SetActive(true);
+        }
+        else
+        {
+            launcher.Shoot();
+            launcher.ShootEffect();
+        }
+
     }
 
     void OnTeleport(InputAction.CallbackContext callbackContext)
@@ -53,14 +62,14 @@ public class CharacterController : MonoBehaviour
             if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
                 Vector3 newPosition = teleportPoints[0].position;
-                newPosition.y += 0.64f; 
+                newPosition.y += 0.64f;
                 transform.position = newPosition;
 
             }
             else if (Keyboard.current.digit2Key.wasPressedThisFrame)
             {
                 Vector3 newPosition = teleportPoints[1].position;
-                newPosition.y += 0.64f; 
+                newPosition.y += 0.64f;
                 transform.position = newPosition;
 
             }

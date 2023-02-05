@@ -7,6 +7,8 @@ public class ThornLauncher : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public GameObject bombPrefab;
+    public GameObject newBomb;
     public float bulletForce = 20.0f;
     private List<GameObject> pooledBullets = new List<GameObject>();
     [SerializeField]
@@ -22,6 +24,8 @@ public class ThornLauncher : MonoBehaviour
     public TextMeshProUGUI bulletSpeedText;
     public TextMeshProUGUI bulletSizeText;
     bool shown;
+    GameObject damageEffect;
+    public GameObject hitEffect;
 
 
     public void Awake()
@@ -106,6 +110,13 @@ public class ThornLauncher : MonoBehaviour
         Destroy(effect, 2.0f);
     }
 
+    public void ShootEffect()
+    {
+        damageEffect = Instantiate(hitEffect, firePoint.position, Quaternion.identity);
+        damageEffect.transform.position = firePoint.position;
+        Destroy(damageEffect, 2.0f);
+    }
+
     public void AttackSpeedIncrease()
     {
         int wave = waveManager.wave;
@@ -149,6 +160,26 @@ public class ThornLauncher : MonoBehaviour
             randomBullet.transform.localScale = newSize;
             displayText("Random Bullet Size Up!", bulletSizeText);
         }
+    }
+
+    public void GainBomg()
+    {
+        int wave = waveManager.wave;    
+        if (wave % 12 == 0 && wave != 0)
+        {
+            Debug.Log("should make new bomb");
+            newBomb = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
+            newBomb.SetActive(false);
+            if (newBomb.activeInHierarchy)
+            {
+                Invoke("DeleteBomb", 3f);
+            }
+
+        }
+    }
+    private void DeleteBomb()
+    {
+        Destroy(newBomb);
     }
 
     private void displayText(string message, TextMeshProUGUI textType)

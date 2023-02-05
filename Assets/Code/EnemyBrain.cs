@@ -17,6 +17,9 @@ public class EnemyBrain : MonoBehaviour
     public AudioClip music;
     private AudioSource audioSource;
     public AudioMixerGroup mixerGroup;
+    GameObject effect;
+    public GameObject hitEffect;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -46,7 +49,7 @@ public class EnemyBrain : MonoBehaviour
                 {
                     player.GetComponent<Stats>().CurrentHealth -= stats.Damage;
                     audioSource.PlayOneShot(music);
-
+                    ShootEffect();
                     break;
            
                 }
@@ -74,5 +77,12 @@ public class EnemyBrain : MonoBehaviour
                 
             }
         }
+    }
+    public void ShootEffect()
+    {
+        effect = Instantiate(hitEffect, attackPoint.position, Quaternion.identity);
+        effect.transform.position = attackPoint.position;
+        Destroy(effect, 2.0f);
+       
     }
 }
