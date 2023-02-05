@@ -16,8 +16,6 @@ public class CharacterController : MonoBehaviour
 
     private bool isCoolingDown;
 
-    // my code to make polling for the bullets (refer to issue 2 in thorn if confused
-
 
 
 
@@ -88,13 +86,4 @@ public class CharacterController : MonoBehaviour
 }
 
 
-    // more code for the bullet pool, again issue 2.
 
-
-// shooting code used before, not sure if it works with the new hiteffect code test it or smn idk
-//void Shoot()
-//{
-//    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-//    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-//    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-//}
