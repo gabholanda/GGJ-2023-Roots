@@ -29,6 +29,9 @@ public class DeathMenuManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.GetComponent<Stats>().OnDeath -= TurnOnDeathMenu;
+        if (player != null)
+        {
+            player.GetComponent<Stats>().OnDeath -= TurnOnDeathMenu;
+        }
     }
 }
