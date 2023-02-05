@@ -43,7 +43,8 @@ public class WaveManager : MonoBehaviour
         if (currentKilled > currentThresold)
         {
             wave++;
-            thornLauncher.attackSpeedIncrease();
+            thornLauncher.AttackSpeedIncrease();
+            thornLauncher.IncreaseBulletSpeed();
             currentThresold += incrementPerWave;
             spawner.SetTimeBetweenSpawns(spawner.GetTimeBetweenSpawns() - spawnDecrement);
         }
