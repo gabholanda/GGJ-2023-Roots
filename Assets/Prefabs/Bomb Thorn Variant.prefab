@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6970163355907457934, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
       propertyPath: m_Name
-      value: Bomb Thorn
+      value: Bomb Thorn Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6970163355907457936, guid: 56ea001c0075d3f4781e7086b0cd4a94, type: 3}
       propertyPath: m_RootOrder
