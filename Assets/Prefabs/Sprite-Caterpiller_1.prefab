@@ -147,6 +147,7 @@ MonoBehaviour:
   nextTimeAttack: 0
   music: {fileID: 8300000, guid: 774655c60743b644e9967230ab1ce0fa, type: 3}
   mixerGroup: {fileID: 24300002, guid: 71a849bd70825c342b29c5f6b7651731, type: 2}
+  hitEffect: {fileID: 6326840814585585488, guid: 864f25f431670c04685f30f31622bb34, type: 3}
 --- !u!50 &1441074328471091643
 Rigidbody2D:
   serializedVersion: 4
