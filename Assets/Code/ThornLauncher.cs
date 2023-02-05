@@ -13,6 +13,8 @@ public class ThornLauncher : MonoBehaviour
     List<GameObject> activeBullets;
     bool shootCooldown = false;
     float shootCooldownLength = 0.25f;
+    public GameObject shootEffect;
+    GameObject effect;
 
     public void Awake()
     {
@@ -52,6 +54,8 @@ public class ThornLauncher : MonoBehaviour
         if (unactiveBullet && shootCooldown == false)
         {
             // We set everything we need before activating and shooting
+            effect = Instantiate(shootEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 2.0f);
             Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
             unactiveBullet.transform.position = firePoint.position;
             unactiveBullet.SetActive(true);
