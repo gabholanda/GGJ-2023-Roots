@@ -15,11 +15,15 @@ public class Thorn : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        gun.StopCoroutine(cooldown);
-        effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 2.0f);
-        gameObject.SetActive(false);
-        collision.gameObject.GetComponent<Stats>().CurrentHealth -= stats.Damage;
+        Stats collisionStats = collision.gameObject.GetComponent<Stats>();
+        if (collisionStats != null)
+        {
+            gun.StopCoroutine(cooldown);
+            effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 2.0f);
+            gameObject.SetActive(false);
+            collisionStats.CurrentHealth -= stats.Damage;
+        }
     }
 
 

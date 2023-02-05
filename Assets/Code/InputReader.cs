@@ -6,4 +6,5 @@ public class InputReader : ScriptableObject
 {
     public InputAction OnFire;
     public InputAction OnTeleport;
+    //public InputAction OnUse;
 }

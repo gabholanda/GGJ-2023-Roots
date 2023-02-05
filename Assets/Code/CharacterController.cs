@@ -14,18 +14,21 @@ public class CharacterController : MonoBehaviour
     [Min(0.0f)]
     private float cooldownTime;
     private bool isCoolingDown;
+    public ThornLauncher thorn;
 
 
 
     private void Awake()
     {
         stats = GetComponent<Stats>();
-
+        //thorn = GetComponent<ThornLauncher>();
 
     }
 
     private void OnEnable()
     {
+        //reader.OnUse.performed += OnUse;
+        //reader.OnUse.Enable();
         reader.OnFire.performed += OnFire;
         reader.OnFire.Enable();
         reader.OnTeleport.performed += OnTeleport;
@@ -34,17 +37,27 @@ public class CharacterController : MonoBehaviour
 
     private void OnDisable()
     {
+        //reader.OnUse.performed -= OnUse;
+        //reader.OnUse.Disable();
         reader.OnFire.performed -= OnFire;
         reader.OnFire.Disable();
         reader.OnTeleport.performed -= OnTeleport;
         reader.OnTeleport.Disable();
     }
 
+    //void OnUse(InputAction.CallbackContext obj)
+    //{
+    //    Debug.Log("b has been pressed");
+    //    thorn.pressed = true;
+        
+      
+    //}
     void OnFire(InputAction.CallbackContext obj)
     {
-        launcher.Shoot();
-        launcher.ShootEffect();
-   
+
+            launcher.Shoot();
+            launcher.ShootEffect();
+
     }
 
     void OnTeleport(InputAction.CallbackContext callbackContext)

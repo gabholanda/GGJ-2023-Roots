@@ -7,6 +7,8 @@ public class ThornLauncher : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    //public GameObject bombPrefab;
+    //public bool pressed;
     public float bulletForce = 20.0f;
     private List<GameObject> pooledBullets = new List<GameObject>();
     [SerializeField]
@@ -24,7 +26,7 @@ public class ThornLauncher : MonoBehaviour
     bool shown;
     GameObject damageEffect;
     public GameObject hitEffect;
-    
+
 
     public void Awake()
     {
@@ -53,7 +55,7 @@ public class ThornLauncher : MonoBehaviour
 
     private List<GameObject> GetUnactiveBullets()
     {
-        return pooledBullets.FindAll(e => !e.activeInHierarchy);
+        return pooledBullets.FindAll(e => e != null && !e.activeInHierarchy);
     }
 
     private GameObject GetUnactiveBullet()
@@ -100,7 +102,7 @@ public class ThornLauncher : MonoBehaviour
     {
         StopCouroutine(couroutine);
     }
-
+        
     public void HitEnemyEffect() // not working idk why
     {
         effect = Instantiate(shootEffect, firePoint.position, Quaternion.identity);
@@ -159,6 +161,20 @@ public class ThornLauncher : MonoBehaviour
             displayText("Random Bullet Size Up!", bulletSizeText);
         }
     }
+    //public void GainBomb()
+    //{
+    //    int wave = waveManager.wave;
+    //    Vector3 increment = new Vector3(100f, 100f, 0.0f);
+    //    List<GameObject> unactiveBullet = GetUnactiveBullets();
+    //    if (wave % 12 == 0 && wave != 0)
+    //    {
+    //            GameObject firstBullet = unactiveBullet[1];
+    //            Vector3 newSize = firstBullet.transform.localScale;
+    //            newSize += increment;
+    //            firstBullet.transform.localScale = newSize;
+    //            displayText("Random Bullet Size Up!", bulletSizeText);
+    //    }
+    //}
 
     private void displayText(string message, TextMeshProUGUI textType)
     {
