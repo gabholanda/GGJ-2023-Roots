@@ -25,6 +25,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private int pooledQuantity;
     List<GameObject> activeBullets;
+    bool shootCooldown = false;
+    float shootCooldownLength = 0.25f;
 
 
 
@@ -101,6 +103,7 @@ public class CharacterController : MonoBehaviour
         for (int i = 0; i < pooledQuantity; i++)
         {
             pooledBullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation));
+
             // Unnecessary chunk of code consuming extra space for creating more variables
             // And repeating a search
             //activeBullets = GetActiveBullets();
@@ -111,7 +114,9 @@ public class CharacterController : MonoBehaviour
         activeBullets = GetActiveBullets();
         for (int i = 0; i < activeBullets.Count; i++)
         {
+            activeBullets[i].GetComponent<Thorn>().gun = this;
             activeBullets[i].SetActive(false);
+
         }
     }
 
@@ -130,22 +135,38 @@ public class CharacterController : MonoBehaviour
         // Unlike the enemies which we need to randomize which one to spawn,
         // Bullets are all the same and we just need the "next available" one
         GameObject unactiveBullet = GetUnactiveBullet();
-        if (unactiveBullet)
+        if (unactiveBullet && shootCooldown == false)
         {
             // We set everything we need before activating and shooting
             Rigidbody2D rb = unactiveBullet.GetComponent<Rigidbody2D>();
             unactiveBullet.transform.position = firePoint.position;
             unactiveBullet.SetActive(true);
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-            StartCoroutine(DeactivateBullet(unactiveBullet));
+            unactiveBullet.GetComponent<Thorn>().cooldown = StartCoroutine(DeactivateBullet(unactiveBullet));
+            shootCooldown = true;
+            StartCoroutine(ShootCooldown());
         }
     }
 
 
     public IEnumerator DeactivateBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(2.0f);
-        bullet.SetActive(false);
+        yield return new WaitForSeconds(3.0f);
+        if (bullet.activeInHierarchy)
+        {
+            bullet.SetActive(false);
+        }
+    }
+
+    public IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(shootCooldownLength);
+        shootCooldown = false;
+    }
+
+    public void StopCouroutine(Coroutine couroutine)
+    {
+        StopCouroutine(couroutine);
     }
 
 
