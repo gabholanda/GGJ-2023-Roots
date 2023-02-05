@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Stats))]
-public class EnemyAI : MonoBehaviour
+public class EnemyBrain : MonoBehaviour
 {
     public GameObject player;
     public Stats stats;
